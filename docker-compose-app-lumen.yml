@@ -3,7 +3,7 @@ services:
 #PHP
   back_ssa_app_example_php:
     build:
-      context: ${PWD}/app_example
+      context: ./
     image: app-example
     container_name: back_ssa_app_example_php
     restart: unless-stopped
@@ -13,8 +13,8 @@ services:
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
-      - ${PWD}/app_example/:/var/www
-      - ${PWD}/app_example/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+      - ./app_example/:/var/www
+      - ./app_example/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - net-app
   #Nginx
@@ -27,8 +27,8 @@ services:
       - "8286:80"
       - "446:443"
     volumes:
-      - ${PWD}/app_example/:/var/www
-      - ${PWD}/app_example/nginx/conf.d/:/etc/nginx/conf.d/
+      - ./app_example/:/var/www
+      - ./app_example/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - net-app
   #MySQL
