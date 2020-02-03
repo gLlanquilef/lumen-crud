@@ -6,5 +6,4 @@
 /node_modules
 .env
 /.idea
-/ssaysen
 composer.lock
