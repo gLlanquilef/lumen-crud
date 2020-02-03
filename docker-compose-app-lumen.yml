@@ -4,7 +4,7 @@ services:
   back_ssa_app_example_php:
     build:
       context: ${PWD}/app_example
-    image: ssa_esperaturnos
+    image: app-example
     container_name: back_ssa_app_example_php
     restart: unless-stopped
     tty: true
