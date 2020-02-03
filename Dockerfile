@@ -38,7 +38,7 @@ RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
  
 # Copiar el directorio existente a /var/www
-COPY app-example/ssaysen /var/www
+COPY ssaysen /var/www
  
 # copiar los permisos del directorio de la aplicación
 COPY --chown=www:www app-example/ssaysen /var/www
