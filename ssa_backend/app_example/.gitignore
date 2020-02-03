@@ -1,0 +1,10 @@
+/kongdata
+/kong-psql
+/html
+/backend
+/vendor
+/node_modules
+.env
+/.idea
+/ssaysen
+composer.lock

@@ -1,0 +1,44 @@
+version: '3'
+services:
+#PHP
+  back_ssa_app_example_php:
+    build:
+      context: ${PWD}/ssa_backend/app_example
+    image: ssa_esperaturnos
+    container_name: back_ssa_app_example_php
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: back_app_example_php
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ${PWD}/ssa_backend/app_example/:/var/www
+      - ${PWD}/ssa_backend/app_example/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - net-app
+  #Nginx
+  back_ssa_app_example_web:
+    image: nginx:alpine
+    container_name: back_ssa_app_example_web
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8286:80"
+      - "446:443"
+    volumes:
+      - ${PWD}/ssa_backend/app_example/:/var/www
+      - ${PWD}/ssa_backend/app_example/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - net-app
+  #MySQL
+
+
+#Redes
+networks:
+  net-app:
+#Volumenes
+volumes:
+  dbdata:
+    driver: local
+
