@@ -41,15 +41,15 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 COPY ssaysen /var/www
  
 # copiar los permisos del directorio de la aplicación
-COPY --chown=www:www app-example/ssaysen /var/www
+COPY --chown=www:www ssaysen /var/www
  
 # cambiar el usuario actual por www
 USER www
 
 # install oci
-COPY var/instantclient-basic-linux.x64-12.2.0.1.0.zip \
-     var/instantclient-sdk-linux.x64-12.2.0.1.0.zip \
-     var/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip /tmp/
+COPY app_example/var/instantclient-basic-linux.x64-12.2.0.1.0.zip \
+     app_example/var/instantclient-sdk-linux.x64-12.2.0.1.0.zip \
+     app_example/var/instantclient-sqlplus-linux.x64-12.2.0.1.0.zip /tmp/
 
 USER root
 
